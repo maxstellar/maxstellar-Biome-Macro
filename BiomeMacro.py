@@ -21,7 +21,7 @@ logger = logging.getLogger('mylogger')
 def my_handler(types, value, tb):
     logger.exception("Uncaught exception: {0}".format(str(value)))
     print("Check crash.log for info on this crash.")
-    input("Press enter to exit.")
+    time.sleep(10)
     sys.exit()
 
 
@@ -215,30 +215,33 @@ def init():
         check_for_hover_text(file, roblox_open)
 
 
-print("Welcome to maxstellar's Biome Macro")
+print("Welcome to maxstellar's Biome Macro!")
 print()
-print("ALL CREDITS GO TO maxstellar, dan, and yeswe")
+print("Subscribe to my YouTube channel: https://youtube.com/@maxstellar_")
+print("If there are any issues with the macro, join our Discord server: https://discord.gg/solsniper")
+print()
+print("ALL CREDITS GO TO maxstellar, dannw, and yeswe")
 print("--------------------------------------------")
 
 webhook_label = customtkinter.CTkLabel(root, text="Webhook URL:", font=customtkinter.CTkFont(size=20))
 webhook_label.grid(column=0, row=0, columnspan=4, padx=(10, 40), pady=(20, 0), sticky="w")
 
 webhook_field = customtkinter.CTkEntry(root, font=customtkinter.CTkFont(size=20), width=300, textvariable=webhookURL)
-webhook_field.grid(row=0, column=1, padx=(57, 0), pady=(20, 0), sticky="w")
+webhook_field.grid(row=0, column=1, padx=(33, 0), pady=(20, 0), sticky="w")
 
 ps_label = customtkinter.CTkLabel(root, text="Private Server URL:", font=customtkinter.CTkFont(size=20))
 ps_label.grid(column=0, row=1, columnspan=4, padx=(10, 40), pady=(20, 0), sticky="w")
 
 ps_field = customtkinter.CTkEntry(root, font=customtkinter.CTkFont(size=20), width=300, textvariable=psURL)
-ps_field.grid(row=1, column=1, padx=(102, 0), pady=(20, 0), sticky="w")
+ps_field.grid(row=1, column=1, padx=(78, 0), pady=(20, 0), sticky="w")
 
 start_button = customtkinter.CTkButton(root, text="Start", font=customtkinter.CTkFont(size=20, weight="bold"), width=75, command=init)
 start_button.grid(row=2, column=0, padx=(10, 0), pady=(20, 0), sticky="w")
 
-donate_button = customtkinter.CTkButton(root, text="Donate", font=customtkinter.CTkFont(size=20, weight="bold"), width=75, command=lambda: open_url("https://www.roblox.com/games/13002983669/KrystaiTwos-Place#!/store"))
+donate_button = customtkinter.CTkButton(root, text="YouTube", font=customtkinter.CTkFont(size=20, weight="bold"), width=75, command=lambda: open_url("https://youtube.com/@maxstellar_"))
 donate_button.grid(row=3, column=0, padx=(10, 0), pady=(20, 0), sticky="w")
 
-support_button = customtkinter.CTkButton(root, text="Support Discord", font=customtkinter.CTkFont(size=20, weight="bold"), width=75, command=lambda: open_url("https://discord.gg/solsniper"))
+support_button = customtkinter.CTkButton(root, text="Join Discord for help", font=customtkinter.CTkFont(size=20, weight="bold"), width=75, command=lambda: open_url("https://discord.gg/solsniper"))
 support_button.grid(row=3, column=1, padx=(10, 0), pady=(20, 0), sticky="w")
 
 root.mainloop()
