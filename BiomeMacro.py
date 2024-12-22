@@ -35,11 +35,11 @@ sys.excepthook = my_handler
 customtkinter.set_default_color_theme("dark-blue")
 root = customtkinter.CTk()
 root.title("maxstellar's Biome Macro")
-root.geometry('505x275')
+root.geometry('505x285')
 root.resizable(False, False)
 dirname = os.path.dirname(__file__)
 root.iconbitmap(dirname + '\\icon.ico')
-tabview = customtkinter.CTkTabview(root, width=505, height=220)
+tabview = customtkinter.CTkTabview(root, width=505, height=230)
 tabview.grid(row=0, column=0, sticky='nsew', columnspan=75)
 tabview.add("Webhook")
 tabview.add("Macro")
@@ -318,7 +318,7 @@ def check_for_hover_text(file):
                                                 embed = discord_webhook.DiscordEmbed(
                                                     description="[" + time.strftime(
                                                         '%H:%M:%S') + "]: Automatically popped " + oblivion_amt.get() + " Oblivion Potions!",
-                                                    color="ff98dc")
+                                                    color="8a43d1")
                                                 embed.set_footer(text="maxstellar's Biome Macro | v1.1",
                                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                                 webhook.add_embed(embed)
@@ -736,11 +736,11 @@ heavenly_field.grid(row=2, column=1, padx=(310, 0), pady=(10, 0), sticky="w")
 oblivion_toggle = customtkinter.CTkCheckBox(tabview.tab("Macro"), text="Auto-Oblivion",
                                             font=customtkinter.CTkFont(family="Segoe UI", size=20),
                                             variable=oblivion_pop, command=oblivion_toggle_update)
-oblivion_toggle.grid(row=3, column=0, columnspan=2, padx=(10, 0), pady=(5, 0), sticky="w")
+oblivion_toggle.grid(row=3, column=0, columnspan=2, padx=(10, 0), sticky="w")
 
 oblivion_field = customtkinter.CTkEntry(tabview.tab("Macro"), font=customtkinter.CTkFont(family="Segoe UI", size=20),
                                         width=50, textvariable=oblivion_amt)
-oblivion_field.grid(row=3, column=1, padx=(175, 0), pady=(10, 0), sticky="w")
+oblivion_field.grid(row=3, column=1, padx=(175, 0), pady=(3, 0), sticky="w")
 
 root.bind("<Destroy>", lambda event: x_stop())
 root.bind("<Button-1>", lambda e: e.widget.focus_set())
