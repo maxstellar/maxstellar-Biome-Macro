@@ -57,7 +57,7 @@ if not os.path.exists(config_name):
     config['Macro'] = {'aura_detection': "0", 'aura_notif': "0", 'heavenly_pop': "0", 'heavenly_amt': "0",
                        'oblivion_pop': "0", "oblivion_amt": "0"}
     config['Biomes'] = {'windy': "1", 'snowy': "1", 'rainy': "1", 'sand_storm': "1", 'hell': "1", "starfall": "1",
-                        "corruption": "1", "null": "1", "graveyard": "1", "pumpkin_moon": "1"}
+                        "corruption": "1", "null": "1"}
     with open(config_name, 'w') as conffile:
         config.write(conffile)
 config.read(config_name)
@@ -76,9 +76,9 @@ packages_path = os.path.expandvars(r"%localappdata%\Packages")
 roblox_folder = None
 roblox_log_path = None
 roblox_version = None
-biome_colors = {"NORMAL": "ffffff", "PUMPKIN MOON": "d55f09", "GRAVEYARD": "454545", "SAND STORM": "F4C27C",
+biome_colors = {"NORMAL": "ffffff", "SAND STORM": "F4C27C",
                 "HELL": "5C1219", "STARFALL": "6784E0", "CORRUPTION": "9042FF", "NULL": "000000", "GLITCHED": "65FF65",
-                "WINDY": "91F7FF", "SNOWY": "C4F5F6", "RAINY": "4385FF"}
+                "WINDY": "91F7FF", "SNOWY": "C4F5F6", "RAINY": "4385FF", "DREAMSPACE": "ff7dff"}
 started = False
 stopped = False
 destroyed = False
@@ -99,9 +99,15 @@ hell = customtkinter.IntVar(root, int(config['Biomes']['hell']))
 starfall = customtkinter.IntVar(root, int(config['Biomes']['starfall']))
 corruption = customtkinter.IntVar(root, int(config['Biomes']['corruption']))
 null = customtkinter.IntVar(root, int(config['Biomes']['null']))
-graveyard = customtkinter.IntVar(root, int(config['Biomes']['graveyard']))
-pumpkin_moon = customtkinter.IntVar(root, int(config['Biomes']['pumpkin_moon']))
 glitched = customtkinter.IntVar(root, 1)
+dreamspace = customtkinter.IntVar(root, 1)
+
+
+def get_biome_color(biome):
+    try:
+        return biome_colors[biome]
+    except:
+        return "ff69b4"
 
 
 def stop():
@@ -125,7 +131,7 @@ def stop():
                 ending_webhook = discord_webhook.DiscordWebhook(url=webhookURL.get())
                 ending_embed = discord_webhook.DiscordEmbed(
                     description="[" + time.strftime('%H:%M:%S') + "]: Macro stopped.")
-                ending_embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                ending_embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                         icon_url="https://maxstellar.github.io/maxstellar.png")
                 ending_webhook.add_embed(ending_embed)
                 ending_webhook.execute()
@@ -133,7 +139,7 @@ def stop():
         else:
             ending_embed = discord_webhook.DiscordEmbed(
                 description="[" + time.strftime('%H:%M:%S') + "]: Macro stopped.")
-            ending_embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+            ending_embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                     icon_url="https://maxstellar.github.io/maxstellar.png")
             for url in webhook_urls:
                 ending_webhook = discord_webhook.DiscordWebhook(url=url)
@@ -267,15 +273,15 @@ def check_for_hover_text(file):
                                         stop()
                                         return
                                     webhook = discord_webhook.DiscordWebhook(url=webhookURL.get())
-                                    if event == "NORMAL":
+                                    if event == "SNOWY":
                                         if last_event is not None:
                                             print(time.strftime('%H:%M:%S') + f": Biome Ended - " + last_event)
                                             if globals()[last_event.replace(" ", "_").lower()].get() == 1:
                                                 embed = discord_webhook.DiscordEmbed(
                                                     title="[" + time.strftime('%H:%M:%S') + "]",
-                                                    color=biome_colors[last_event],
+                                                    color=get_biome_color(last_event),
                                                     description="> ## Biome Ended - " + last_event)
-                                                embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                                embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                                 embed.set_thumbnail(
                                                     url="https://maxstellar.github.io/biome_thumb/" + last_event.replace(
@@ -289,15 +295,15 @@ def check_for_hover_text(file):
                                         if globals()[event.replace(" ", "_").lower()].get() == 1:
                                             embed = discord_webhook.DiscordEmbed(
                                                 title="[" + time.strftime('%H:%M:%S') + "]",
-                                                color=biome_colors[event],
+                                                color=get_biome_color(event),
                                                 description="> ## Biome Started - " + event)
-                                            embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                            embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                              icon_url="https://maxstellar.github.io/maxstellar.png")
                                             embed.set_thumbnail(
                                                 url="https://maxstellar.github.io/biome_thumb/" + event.replace(" ",
                                                                                                                 "%20") + ".png")
                                             webhook.add_embed(embed)
-                                        if event == "GLITCHED":
+                                        if event == "GLITCHED" or event == "DREAMSPACE":
                                             webhook.set_content("@everyone " + psURL.get())
                                         webhook.execute()
                                         if event == "GLITCHED":
@@ -308,7 +314,7 @@ def check_for_hover_text(file):
                                                     description="[" + time.strftime(
                                                         '%H:%M:%S') + "]: Automatically popped " + heavenly_amt.get() + " Heavenly Potion IIs!",
                                                     color="ff98dc")
-                                                embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                                embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                                 webhook.add_embed(embed)
                                                 webhook.execute()
@@ -319,12 +325,12 @@ def check_for_hover_text(file):
                                                     description="[" + time.strftime(
                                                         '%H:%M:%S') + "]: Automatically popped " + oblivion_amt.get() + " Oblivion Potions!",
                                                     color="8a43d1")
-                                                embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                                embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                                 webhook.add_embed(embed)
                                                 webhook.execute()
                                 else:
-                                    if event == "NORMAL":
+                                    if event == "SNOWY":
                                         if last_event is not None:
                                             print(time.strftime('%H:%M:%S') + f": Biome Ended - " + last_event)
                                             if globals()[last_event.replace(" ", "_").lower()].get() == 1:
@@ -332,9 +338,9 @@ def check_for_hover_text(file):
                                                     webhook = discord_webhook.DiscordWebhook(url=url)
                                                     embed = discord_webhook.DiscordEmbed(
                                                         title="[" + time.strftime('%H:%M:%S') + "]",
-                                                        color=biome_colors[last_event],
+                                                        color=get_biome_color(last_event),
                                                         description="> ## Biome Ended - " + last_event)
-                                                    embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                                    embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                                      icon_url="https://maxstellar.github.io/maxstellar.png")
                                                     embed.set_thumbnail(
                                                         url="https://maxstellar.github.io/biome_thumb/" + last_event.replace(
@@ -349,16 +355,16 @@ def check_for_hover_text(file):
                                             for url in webhook_urls:
                                                 embed = discord_webhook.DiscordEmbed(
                                                     title="[" + time.strftime('%H:%M:%S') + "]",
-                                                    color=biome_colors[event],
+                                                    color=get_biome_color(event),
                                                     description="> ## Biome Started - " + event)
-                                                embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                                embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                                 embed.set_thumbnail(
                                                     url="https://maxstellar.github.io/biome_thumb/" + event.replace(" ",
                                                                                                                     "%20") + ".png")
                                                 webhook = discord_webhook.DiscordWebhook(url=url)
                                                 webhook.add_embed(embed)
-                                                if event == "GLITCHED":
+                                                if event == "GLITCHED" or event == "DREAMSPACE":
                                                     webhook.set_content("@everyone " + psURL.get())
                                                 webhook.execute()
                                         if event == "GLITCHED":
@@ -370,7 +376,7 @@ def check_for_hover_text(file):
                                                         description="[" + time.strftime(
                                                             '%H:%M:%S') + "]: Automatically popped " + heavenly_amt.get() + " Heavenly Potion IIs!",
                                                         color="ff98dc")
-                                                    embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                                    embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                                      icon_url="https://maxstellar.github.io/maxstellar.png")
                                                     webhook.add_embed(embed)
                                                     webhook.execute()
@@ -382,7 +388,7 @@ def check_for_hover_text(file):
                                                         description="[" + time.strftime(
                                                             '%H:%M:%S') + "]: Automatically popped " + oblivion_amt.get() + " Oblivion Potions!",
                                                         color="8a43d1")
-                                                    embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                                    embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                                      icon_url="https://maxstellar.github.io/maxstellar.png")
                                                     webhook.add_embed(embed)
                                                     webhook.execute()
@@ -400,7 +406,7 @@ def check_for_hover_text(file):
                                         embed = discord_webhook.DiscordEmbed(
                                             title="[" + time.strftime('%H:%M:%S') + "]",
                                             description="> ## Aura Equipped - " + aura)
-                                        embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                        embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                          icon_url="https://maxstellar.github.io/maxstellar.png")
                                         webhook.add_embed(embed)
                                         webhook.execute()
@@ -413,7 +419,7 @@ def check_for_hover_text(file):
                                             embed = discord_webhook.DiscordEmbed(
                                                 title="[" + time.strftime('%H:%M:%S') + "]",
                                                 description="> ## Aura Equipped - " + aura)
-                                            embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                                            embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                                              icon_url="https://maxstellar.github.io/maxstellar.png")
                                             webhook.add_embed(embed)
                                             webhook.execute()
@@ -434,7 +440,7 @@ def check_for_hover_text(file):
                 close_webhook = discord_webhook.DiscordWebhook(url=webhookURL.get())
                 close_embed = discord_webhook.DiscordEmbed(
                     description="[" + time.strftime('%H:%M:%S') + "]: Roblox was closed/crashed.")
-                close_embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                close_embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                        icon_url="https://maxstellar.github.io/maxstellar.png")
                 close_webhook.add_embed(close_embed)
                 close_webhook.execute()
@@ -443,7 +449,7 @@ def check_for_hover_text(file):
                     close_webhook = discord_webhook.DiscordWebhook(url=url)
                     close_embed = discord_webhook.DiscordEmbed(
                         description="[" + time.strftime('%H:%M:%S') + "]: Roblox was closed/crashed.")
-                    close_embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+                    close_embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                                            icon_url="https://maxstellar.github.io/maxstellar.png")
                     close_webhook.add_embed(close_embed)
                     close_webhook.execute()
@@ -550,17 +556,13 @@ def manage_tlw():
                                                       command=lambda: tlw_toggle_update("sand_storm"))
         sand_storm_toggle.grid(row=4, column=0, sticky="w", padx=10, pady=10)
         hell_toggle = customtkinter.CTkCheckBox(tlw, text="Hell", font=customtkinter.CTkFont(family="Segoe UI", size=20), variable=hell, command=lambda: tlw_toggle_update("hell"))
-        hell_toggle.grid(row=5, column=0, sticky="w", padx=10, pady=10)
+        hell_toggle.grid(row=4, column=1, sticky="w", padx=10, pady=10)
         starfall_toggle = customtkinter.CTkCheckBox(tlw, text="Starfall", font=customtkinter.CTkFont(family="Segoe UI", size=20), variable=starfall, command=lambda: tlw_toggle_update("starfall"))
         starfall_toggle.grid(row=1, column=1, sticky="w", padx=10, pady=10)
         corruption_toggle = customtkinter.CTkCheckBox(tlw, text="Corruption", font=customtkinter.CTkFont(family="Segoe UI", size=20), variable=corruption, command=lambda: tlw_toggle_update("corruption"))
         corruption_toggle.grid(row=2, column=1, sticky="w", padx=10, pady=10)
         null_toggle = customtkinter.CTkCheckBox(tlw, text="Null", font=customtkinter.CTkFont(family="Segoe UI", size=20), variable=null, command=lambda: tlw_toggle_update("null"))
         null_toggle.grid(row=3, column=1, sticky="w", padx=10, pady=10)
-        pumpkin_moon_toggle = customtkinter.CTkCheckBox(tlw, text="Pumpkin Moon", font=customtkinter.CTkFont(family="Segoe UI", size=20), variable=pumpkin_moon, command=lambda: tlw_toggle_update("pumpkin_moon"))
-        pumpkin_moon_toggle.grid(row=4, column=1, sticky="w", padx=10, pady=10)
-        graveyard_toggle = customtkinter.CTkCheckBox(tlw, text="Graveyard", font=customtkinter.CTkFont(family="Segoe UI", size=20), variable=graveyard, command=lambda: tlw_toggle_update("graveyard"))
-        graveyard_toggle.grid(row=5, column=1, sticky="w", padx=10, pady=10)
         tlw.after(0, tlw.focus)
         tlw.after(100, lambda: tlw.resizable(False, False))
         tlw.after(250, lambda: tlw.iconbitmap(dirname + '\\icon.ico'))
@@ -588,7 +590,7 @@ def init():
     # start webhook
     starting_embed = discord_webhook.DiscordEmbed(
         description="[" + time.strftime('%H:%M:%S') + "]: Macro started!")
-    starting_embed.set_footer(text="maxstellar's Biome Macro | v1.1",
+    starting_embed.set_footer(text="maxstellar's Biome Macro | v1.2",
                               icon_url="https://maxstellar.github.io/maxstellar.png")
     if multi_webhook.get() != "1":
         if "discord.com" not in webhookURL.get() or "https://" not in webhookURL.get():
