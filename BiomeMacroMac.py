@@ -437,11 +437,11 @@ start_button.grid(row=1, column=0, padx=(10, 0), pady=(10, 0), sticky="w")
 stop_button = customtkinter.CTkButton(root, text="Stop", font=customtkinter.CTkFont(family="Segoe UI", size=20, weight="bold"), width=75, command=stop)
 stop_button.grid(row=1, column=1, padx=(5, 0), pady=(10, 0), sticky="w")
 
-max_pfp = customtkinter.CTkImage(dark_image=Image.open(dirname + "/maxstellar.png"), size=(100, 100))
+max_pfp = customtkinter.CTkImage(dark_image=Image.open("maxstellar.png"), size=(100, 100))
 max_pfp_label = customtkinter.CTkLabel(tabview.tab("Credits"), image=max_pfp, text="")
 max_pfp_label.grid(row=0, column=0, padx=(10, 0), pady=(10, 0), sticky="w")
 
-sols_sniper = customtkinter.CTkImage(dark_image=Image.open(dirname + "/sols_sniper.png"), size=(100, 100))
+sols_sniper = customtkinter.CTkImage(dark_image=Image.open("sols_sniper.png"), size=(100, 100))
 sols_sniper_label = customtkinter.CTkLabel(tabview.tab("Credits"), image=sols_sniper, text="")
 sols_sniper_label.grid(row=0, column=1, padx=(10, 0), pady=(10, 0), sticky="w")
 
