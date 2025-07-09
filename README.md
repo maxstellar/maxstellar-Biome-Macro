@@ -5,7 +5,6 @@
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/maxstellar/maxstellar-Biome-Macro/total)
 ![GitHub Release](https://img.shields.io/github/v/release/maxstellar/maxstellar-Biome-Macro)
 ![GitHub License](https://img.shields.io/github/license/maxstellar/maxstellar-Biome-Macro)
-![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCHYyaxe5AMHKvr0mQCVq_lA)
 </div>
 
 ## Features
