@@ -17,7 +17,7 @@
 - Configurable Discord notifications for biomes and Jester (coming soon!)
 
 ## Installation
-Download the [latest release](https://github.com/maxstellar/maxstellar-Biome-Macro/releases/latest) as a .zip file and extract into an empty folder. Run the .exe file and configure to your liking.\n
+Download the [latest release](https://github.com/maxstellar/maxstellar-Biome-Macro/releases/latest) as a .zip file and extract into an empty folder. Run the .exe file and configure to your liking.<br>
 Alternatively, download and run the Python file, along with needed images and libraries.
 
 ## Common Issues
