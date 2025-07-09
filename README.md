@@ -1,6 +1,6 @@
 <div align="center" style="text-align: center;">
-<p># maxstellar's Biome Macro
-A small macro that detects biomes in the Roblox game Sol's RNG.
+<h1>maxstellar's Biome Macro</h1>
+<p> A small macro that detects biomes in the Roblox game Sol's RNG.
 This macro started as a small project to detect biomes even when I was using my PC for other things.</p>
 </div>
 
