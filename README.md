@@ -2,6 +2,7 @@
 <h1>maxstellar's Biome Macro</h1>
 <p> A small macro that detects biomes in the Roblox game Sol's RNG.<br>This macro started as a small project to detect biomes even when I was using my PC for other things.</p>
 </div>
+
 ![GitHub License](https://img.shields.io/github/license/maxstellar/maxstellar-Biome-Macro)
 
 ## Common Issues
