@@ -8,6 +8,14 @@
 ![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCHYyaxe5AMHKvr0mQCVq_lA)
 </div>
 
+## Features
+- Biome detection without OCR
+- Aura detection without OCR
+- Notifications on Aura roll
+- Roll detection without cutscene or equip needed (coming soon!)
+- Jester and Eden detection (coming soon!)
+- Configurable Discord notifications for biomes and Jester (coming soon!)
+
 ## Common Issues
 ### Macro doesn't detect biomes
 - Close ALL instances of Roblox and the macro, and then opening Roblox, and then opening the macro.
