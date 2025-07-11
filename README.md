@@ -27,7 +27,7 @@ Alternatively, if you already have Python installed, download the Python file al
 ### Macro detects biomes but can't detect rolls or Jester
 Here are a list of things to try, in order:
 1. Restart Roblox
-2. Delete config.ini file from macro folder, restart the macro and then run it and let it patch Roblox, and then restart Roblox.
+2. Delete last_roblox_version value from config.ini file in the macro folder, restart the macro and then run it and let it patch Roblox, and then restart Roblox.
 3. Redownload the macro and save it to a different location entirely.
 
 ### Macro won't launch (shows error message)
