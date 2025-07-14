@@ -25,7 +25,21 @@ Alternatively, if you already have Python installed, download the Python file al
 - Make sure your PC time is not offset (early or late)
 
 ### Macro detects biomes but can't detect rolls or Jester
-Here are a list of things to try, in order:
+If you are using Bloxstrap, follow these instructions:
+1. Go into Bloxstrap settings
+2. Click on the Engine Settings tab
+3. Scroll all the way down to "Fast Flag Editor" and click it (You may receive a warning. This is completely safe if you follow these exact instructions.)
+4. Click "Add New" -> "Import JSON"
+5. Paste the following code into the field and click "OK"
+
+```json
+{
+  "FStringDebugLuaLogLevel": "trace",
+  "FStringDebugLuaLogPattern": "ExpChat/mountClientApp"
+}
+```
+
+Otherwise, here are a list of things to try, in order:
 1. Restart Roblox
 2. Delete last_roblox_version value from config.ini file in the macro folder, restart the macro and then run it and let it patch Roblox, and then restart Roblox.
 3. Redownload the macro and save it to a different location entirely.
