@@ -136,14 +136,14 @@ def stop():
                 ending_webhook = discord_webhook.DiscordWebhook(url=webhookURL.get())
                 ending_embed = discord_webhook.DiscordEmbed(
                     description="[" + time.strftime('%H:%M:%S') + "]: Macro stopped.")
-                ending_embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                ending_embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                         icon_url="https://maxstellar.github.io/maxstellar.png")
                 ending_webhook.add_embed(ending_embed)
                 ending_webhook.execute()
         else:
             ending_embed = discord_webhook.DiscordEmbed(
                 description="[" + time.strftime('%H:%M:%S') + "]: Macro stopped.")
-            ending_embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+            ending_embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                     icon_url="https://maxstellar.github.io/maxstellar.png")
             for url in webhook_urls:
                 ending_webhook = discord_webhook.DiscordWebhook(url=url)
@@ -312,7 +312,7 @@ def check_for_hover_text(file):
                                                     title="[" + time.strftime('%H:%M:%S') + "]",
                                                     color=get_biome_color(last_event),
                                                     description="> ## Biome Ended - " + last_event + "\n" + psURL.get())
-                                                embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                                embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                                 embed.set_thumbnail(
                                                     url="https://maxstellar.github.io/biome_thumb/" + last_event.replace(
@@ -328,7 +328,7 @@ def check_for_hover_text(file):
                                                 title="[" + time.strftime('%H:%M:%S') + "]",
                                                 color=get_biome_color(event),
                                                 description="> ## Biome Started - " + event + "\n" + psURL.get())
-                                            embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                            embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                              icon_url="https://maxstellar.github.io/maxstellar.png")
                                             embed.set_thumbnail(
                                                 url="https://maxstellar.github.io/biome_thumb/" + event.replace(" ", "_") + ".png")
@@ -349,7 +349,7 @@ def check_for_hover_text(file):
                                                         title="[" + time.strftime('%H:%M:%S') + "]",
                                                         color=get_biome_color(last_event),
                                                         description="> ## Biome Ended - " + last_event + "\n" + psURL.get())
-                                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                                      icon_url="https://maxstellar.github.io/maxstellar.png")
                                                     embed.set_thumbnail(
                                                         url="https://maxstellar.github.io/biome_thumb/" + last_event.replace(
@@ -366,7 +366,7 @@ def check_for_hover_text(file):
                                                     title="[" + time.strftime('%H:%M:%S') + "]",
                                                     color=get_biome_color(event),
                                                     description="> ## Biome Started - " + event + "\n" + psURL.get())
-                                                embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                                embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                                 embed.set_thumbnail(
                                                     url="https://maxstellar.github.io/biome_thumb/" + event.replace(" ", "_") + ".png")
@@ -399,7 +399,7 @@ def check_for_hover_text(file):
                             full_user = full_user[:-1]
                             if "(" in full_user:
                                 _, _, rolled_username = full_user.partition("(")
-                                rolled_username = rolled_username[1:]
+                                rolled_username = rolled_username[1:-1]
                             else:
                                 rolled_username = full_user[1:]
                             if rolled_username == roblox_username.strip():
@@ -415,7 +415,7 @@ def check_for_hover_text(file):
                                         title="[" + time.strftime('%H:%M:%S') + "]",
                                         description="> ## You rolled " + aura + "!\n**Chance of 1 in " + rarity + "**",
                                         color=message_color)
-                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                      icon_url="https://maxstellar.github.io/maxstellar.png")
                                     embed.set_thumbnail(url=aura_images[aura.lower()])
                                     webhook.add_embed(embed)
@@ -432,7 +432,7 @@ def check_for_hover_text(file):
                                             title="[" + time.strftime('%H:%M:%S') + "]",
                                             description="> ## You rolled " + aura + "!\n**Chance of 1 in " + rarity + "**",
                                             color=message_color)
-                                        embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                        embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                          icon_url="https://maxstellar.github.io/maxstellar.png")
                                         embed.set_thumbnail(url=aura_images[aura.lower()])
                                         webhook.add_embed(embed)
@@ -455,7 +455,7 @@ def check_for_hover_text(file):
                                         title="[" + time.strftime('%H:%M:%S') + "]",
                                         description=f"> ## The Blinding Light has devoured {roblox_username}\n**Chance of 1 in 1,200,000,000**",
                                         color="98b7e0")
-                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                      icon_url="https://maxstellar.github.io/maxstellar.png")
                                     embed.set_thumbnail(url=aura_images['luminosity'])
                                     webhook.add_embed(embed)
@@ -472,7 +472,7 @@ def check_for_hover_text(file):
                                             title="[" + time.strftime('%H:%M:%S') + "]",
                                             description=f"> ## The Blinding Light has devoured {roblox_username}\n**Chance of 1 in 1,200,000,000**",
                                             color="98b7e0")
-                                        embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                        embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                          icon_url="https://maxstellar.github.io/maxstellar.png")
                                         embed.set_thumbnail(url=aura_images['luminosity'])
                                         webhook.add_embed(embed)
@@ -495,7 +495,7 @@ def check_for_hover_text(file):
                                     description=f"> ## Jester has arrived!\n<t:{int(time.time())}:R>\n\n{psURL.get()}",
                                     color="a352ff"
                                 )
-                                embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                  icon_url="https://maxstellar.github.io/maxstellar.png")
                                 embed.set_thumbnail(
                                     url="https://static.wikia.nocookie.net/sol-rng/images/d/db/Headshot_of_Jester.png/revision/latest?cb=20240630142936")
@@ -512,7 +512,7 @@ def check_for_hover_text(file):
                                         description=f"> ## Jester has arrived!\n<t:{int(time.time())}:R>\n\n{psURL.get()}",
                                         color="a352ff"
                                     )
-                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                                    embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                                      icon_url="https://maxstellar.github.io/maxstellar.png")
                                     embed.set_thumbnail(
                                         url="https://static.wikia.nocookie.net/sol-rng/images/d/db/Headshot_of_Jester.png/revision/latest?cb=20240630142936")
@@ -534,7 +534,7 @@ def check_for_hover_text(file):
                             description="> ## Eden has appeared somewhere in The Limbo.",
                             color="000000"
                         )
-                        embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                        embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                          icon_url="https://maxstellar.github.io/maxstellar.png")
                         embed.set_thumbnail(
                             url="https://maxstellar.github.io/biome_thumb/eden.png")
@@ -550,7 +550,7 @@ def check_for_hover_text(file):
                                 description="> ## Eden has appeared somewhere in The Limbo.",
                                 color="000000"
                             )
-                            embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                            embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                              icon_url="https://maxstellar.github.io/maxstellar.png")
                             embed.set_thumbnail(
                                 url="https://maxstellar.github.io/biome_thumb/eden.png")
@@ -569,7 +569,7 @@ def check_for_hover_text(file):
                 close_webhook = discord_webhook.DiscordWebhook(url=webhookURL.get())
                 close_embed = discord_webhook.DiscordEmbed(
                     description="[" + time.strftime('%H:%M:%S') + "]: Roblox was closed/crashed.")
-                close_embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                close_embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                        icon_url="https://maxstellar.github.io/maxstellar.png")
                 close_webhook.add_embed(close_embed)
                 close_webhook.execute()
@@ -578,7 +578,7 @@ def check_for_hover_text(file):
                     close_webhook = discord_webhook.DiscordWebhook(url=url)
                     close_embed = discord_webhook.DiscordEmbed(
                         description="[" + time.strftime('%H:%M:%S') + "]: Roblox was closed/crashed.")
-                    close_embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+                    close_embed.set_footer(text="maxstellar's Biome Macro | v2.0.3",
                                            icon_url="https://maxstellar.github.io/maxstellar.png")
                     close_webhook.add_embed(close_embed)
                     close_webhook.execute()
@@ -825,7 +825,7 @@ def init():
     # start webhook
     starting_embed = discord_webhook.DiscordEmbed(
         description="[" + time.strftime('%H:%M:%S') + "]: Macro started!")
-    starting_embed.set_footer(text="maxstellar's Biome Macro | v2.0.2",
+    starting_embed.set_footer(text="maxstellar's Biome Macro | v2.0.3d",
                               icon_url="https://maxstellar.github.io/maxstellar.png")
     if multi_webhook.get() != "1":
         if "discord" not in webhookURL.get() or "https://" not in webhookURL.get():
